@@ -7,8 +7,8 @@ import java.util.UUID;
 
 public class UserProfile {
 
-    private UUID userProfileID;
-    private String userName;
+    private final UUID userProfileID;
+    private final String userName;
     private String userProfileImageLink; // s3 key
 
     public UserProfile(UUID userProfileID,
@@ -23,16 +23,8 @@ public class UserProfile {
         return userProfileID;
     }
 
-    public void setUserProfileID(UUID userProfileID) {
-        this.userProfileID = userProfileID;
-    }
-
     public String getUserName() {
         return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
     }
 
     public Optional<String> getUserProfileImageLink() {
@@ -56,5 +48,14 @@ public class UserProfile {
     @Override
     public int hashCode() {
         return Objects.hash(userProfileID, userName, userProfileImageLink);
+    }
+
+    @Override
+    public String toString() {
+        return "UserProfile{" +
+                "userProfileID=" + userProfileID +
+                ", userName='" + userName + '\'' +
+                ", userProfileImageLink='" + userProfileImageLink + '\'' +
+                '}';
     }
 }
