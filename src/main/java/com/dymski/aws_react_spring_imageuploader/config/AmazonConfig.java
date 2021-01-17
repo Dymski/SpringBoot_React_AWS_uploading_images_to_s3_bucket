@@ -3,6 +3,7 @@ package com.dymski.aws_react_spring_imageuploader.config;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import org.springframework.context.annotation.Bean;
@@ -17,12 +18,10 @@ public class AmazonConfig {
                 "AKIAJID5YJYC26CNXOJQ",
                 "em2joG2cj5Uf1nErmSdeeI/6WhcuzfpxA38vMLro"
         );
-
         return AmazonS3ClientBuilder
                 .standard()
+                .withRegion(Regions.DEFAULT_REGION)
                 .withCredentials(new AWSStaticCredentialsProvider(awsCredentials))
                 .build();
-
     }
-
 }
